@@ -1,0 +1,5 @@
+import { Link } from '@tanstack/react-router';
+import { ArrowUpRight, Users, ShieldCheck, Sparkles, Hotel, Utensils, HardHat } from 'lucide-react';
+import { services } from '@/lib/business';
+const icons=[Users,ShieldCheck,Sparkles,Hotel,Utensils,HardHat];
+export function ServiceCard({service,index,details=false}:{service:typeof services[number],index:number,details?:boolean}) { const Icon=icons[index]??Users; return <article className="service-card"><Link to="/contact" className="service-photo"><img src={service.image} width={1024} height={768} loading="lazy" alt={service.title+' professionals'}/><span className="service-number">0{index+1}</span></Link><div className="service-body"><div className="service-category"><Icon size={19}/><span>{service.category}</span></div><h3>{service.title}</h3><p>{service.description}</p>{details&&<ul>{service.roles.map(role=><li key={role}>{role}</li>)}</ul>}<Link to="/contact" className="text-link">{details?'Enquire about this service':'Explore service'}<ArrowUpRight size={17}/></Link></div></article>; }
